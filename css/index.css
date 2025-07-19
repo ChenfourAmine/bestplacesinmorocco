@@ -1,0 +1,112 @@
+/* 
+rgba(92, 57, 17, 1) : Main Color
+rgba(219, 140, 50, 1) : second
+rgba(242, 212, 177, 1)
+*/
+
+.nav1 {
+    background-color: rgb(255, 254, 252);
+}
+
+.nav1 > div > span {
+    background-color: rgba(219, 140, 50, 1) !important;
+    border-radius: 10px !important;
+}
+
+.nav1 > div:nth-child(2) > a {
+    font-weight: 500;
+    opacity: 0.7;
+}
+
+.nav1 > div:nth-child(2) > a:hover {
+    color: rgba(92, 57, 17, 1);
+}
+
+
+.home {
+    width: 100%;
+    height: 100vh;
+    margin-bottom: 1000px;
+    background-color: rgb(255, 254, 252);
+    padding-top: 70px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.home > div {
+    height: 70%;
+}
+
+.home > div:nth-child(1) {
+    width: 55%;
+}
+
+.home > div:nth-child(2) {
+    width: 35%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home > div:nth-child(1) > header {
+    display: flex;
+    flex-direction: column;
+}
+
+.home > div:nth-child(1) > header > span {
+    font-size: 80px;
+    font-family: montserrat;
+    color: rgba(92, 57, 17, 1);
+    font-weight: bold;
+}
+
+.home > div:nth-child(1) > header > span > img {
+    width: 50px;
+}
+
+.home > div:nth-child(1) > header > span > img:nth-child(2) {
+    margin-left: -20px;
+}
+
+.home > div:nth-child(1) > header > span:nth-child(2) {
+    margin-left: 50px;
+}
+
+.home > div:nth-child(1) > p {
+    margin: 30px 0;
+    margin-left: 40px;
+    font-size: 20px;
+    letter-spacing: 0.1em;
+    line-height: 1.5em;
+}
+
+.home > div:nth-child(1) > span {
+    font-size: 25px;
+    padding: 10px 50px;
+    background-color: rgba(219, 140, 50, 1);
+    color: white;
+    border-radius: 50px;
+}
+
+.home > div:nth-child(1) > span > i {
+    margin-left: 10px;
+}
+
+.home > div:nth-child(1) > p > i {
+    font-size: 30px;
+}
+
+
+.home > div:nth-child(2) > div {
+    width: 400px;
+    height: 400px;
+    background-image: url("../images/home-img2.webp");
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    box-shadow: rgb(254, 230, 201) -5px -5px, rgba(219, 140, 50, 1) -10px -10px, rgba(255, 255, 255, 1) -15px -15px;
+}
