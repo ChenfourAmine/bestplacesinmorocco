@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (contactUsButton) {
         contactUsButton.addEventListener('click', function() {
             // Show contact form or scroll to contact section
-            alert('Contact form coming soon! Please call us at +212 (5) 24 56 78 90 or email info@bestplacesinmorocco.com');
+            alert('Contact form coming soon! Please call us at +212 (6) 06 27 51 97 or email info@bestplacesinmorocco.com');
         });
     }
 
@@ -121,8 +121,8 @@ document.addEventListener('DOMContentLoaded', function() {
     socialLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
-            const platform = this.classList.contains('facebook') ? 'Facebook' : 
-                           this.classList.contains('instagram') ? 'Instagram' : 'YouTube';
+            const platform = this.classList.contains('whatsApp') ? 'WhatsApp' : 'WhatsApp'
+                           this.classList.contains('instagram') ? 'Instagram' : 'Instagram';
             alert(`${platform} page coming soon! Follow us for updates and travel inspiration.`);
         });
     });
