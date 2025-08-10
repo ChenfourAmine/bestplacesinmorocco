@@ -5,6 +5,56 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add loaded class to body for smooth transition
     document.body.classList.add('loaded');
     
+    // Image Carousel Functionality
+    let currentSlideIndex = 0;
+    const slides = document.querySelectorAll('.image-carousel .main-image');
+    let autoSlideInterval;
+    
+    // Initialize carousel
+    function initCarousel() {
+        if (slides.length > 0) {
+            showSlide(currentSlideIndex);
+            startAutoSlide();
+        }
+    }
+    
+    // Show specific slide
+    function showSlide(index) {
+        // Hide all slides
+        slides.forEach(slide => slide.classList.remove('active'));
+        
+        // Show current slide
+        if (slides[index]) {
+            slides[index].classList.add('active');
+        }
+    }
+    
+    // Change slide (next only for automatic rotation)
+    function changeSlide() {
+        currentSlideIndex++;
+        
+        // Loop around
+        if (currentSlideIndex >= slides.length) {
+            currentSlideIndex = 0;
+        }
+        
+        showSlide(currentSlideIndex);
+    }
+    
+    // Start automatic slide rotation
+    function startAutoSlide() {
+        autoSlideInterval = setInterval(() => {
+            changeSlide();
+        }, 3500); // Change slide every 3 seconds
+    }
+    
+    // Initialize carousel
+    initCarousel();
+    
+    // Remove manual navigation functions since we don't need them anymore
+    // window.changeSlide = changeSlide;
+    // window.currentSlide = goToSlide;
+    
     // Smooth scrolling for navigation links
     const navLinks = document.querySelectorAll('a[href^="#"]');
     navLinks.forEach(link => {
@@ -132,23 +182,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.style.opacity = '1';
     });
 
-    // Parallax effect for hero section
-    window.addEventListener('scroll', function() {
-        const scrolled = window.pageYOffset;
-        const heroSection = document.querySelector('.hero-section');
-        const mainImage = document.querySelector('.main-image');
-        const backgroundShape = document.querySelector('.background-shape');
-        
-        if (heroSection && mainImage) {
-            const rate = scrolled * -0.3;
-            mainImage.style.transform = `translateY(${rate}px)`;
-            
-            if (backgroundShape) {
-                const shapeRate = scrolled * -0.1;
-                backgroundShape.style.transform = `translateY(${shapeRate}px)`;
-            }
-        }
-    });
 
     // Add hover effects for destination cards
     const destinationCards = document.querySelectorAll('.destination-card');
@@ -226,3 +259,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
     console.log('Morocco Tourism Website loaded successfully! 🇲🇦');
 });
+
