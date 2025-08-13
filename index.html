@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="images/logo-2.png">
     <link rel="stylesheet" href="icones/css/all.css">
     <link rel="stylesheet" href="css/acss.css">
     <link rel="stylesheet" href="css/index.css">
@@ -25,7 +26,7 @@
         <div>
             <a href="#home">Home</a>
             <a href="#tours">Tours</a>
-            <a href="#morocco">Morocco</a>
+            <a href="#excursions">Excursions</a>
             <a href="#testimonials">Testimonials</a>
             <a href="#about">About Us</a>
         </div>
@@ -171,7 +172,7 @@
     </section>
 
     <!-- Stats Section -->
-    <section id="tours" class="stats-section">
+    <section class="stats-section">
         <div class="stats-container">
             <div class="stat-card">
                 <div class="stat-icon">
@@ -198,153 +199,43 @@
     </section>
 
     <!-- Discover Section -->
-    <section id="morocco" class="discover-section">
+    <section id="tours" class="discover-section">
         <div class="discover-container">
+            <h1 class="main-section-title">Our Tours</h1>
             <h2 class="section-title">Discover Morocco</h2>
             <div class="destinations-grid">
-                <div class="destination-card">
-                    <div class="card-image">
-                        <img src="images/marrakech-medina.jpg" 
-                             alt="Marrakech Medina"
-                             onerror="this.src='images/home-img1.jpg'">
-                    </div>
-                    <div class="card-content">
-                        <div class="location">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Marrakech, Morocco</span>
-                        </div>
-                        <h3>Marrakech Medina</h3>
-                        <div class="card-footer">
-                            <div class="price">
-                                <span class="amount">$180</span>
-                                <span class="per">/person</span>
-                            </div>
-                            <button class="view-details">
-                                View Details <i class="fas fa-arrow-right"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                <!-- Tours will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
 
-                <div class="destination-card">
-                    <div class="card-image">
-                        <img src="images/merzouga-sahara.jpeg" 
-                             alt="Sahara Desert"
-                             onerror="this.src='images/home-img2.webp'">
-                    </div>
-                    <div class="card-content">
-                        <div class="location">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Merzouga, Morocco</span>
-                        </div>
-                        <h3>Sahara Desert</h3>
-                        <div class="card-footer">
-                            <div class="price">
-                                <span class="amount">$250</span>
-                                <span class="per">/person</span>
-                            </div>
-                            <button class="view-details">
-                                View Details <i class="fas fa-arrow-right"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+    <!-- Sky Separator Section -->
+    <section class="sky-separator">
+        <div class="separator-content">
+            <h2 class="separator-title">Sky's the Limit</h2>
+            <p class="separator-text">Discover the endless possibilities of Morocco's diverse landscapes, from the golden Sahara dunes to the majestic Atlas Mountains. Every journey begins with a single step.</p>
+            <button class="separator-cta">
+                <i class="fas fa-rocket"></i>
+                EXPLORE MORE
+            </button>
+        </div>
+        <div class="clouds-container">
+            <div class="cloud cloud-1"></div>
+            <div class="cloud cloud-2"></div>
+            <div class="cloud cloud-3"></div>
+            <div class="cloud cloud-4"></div>
+            <div class="cloud cloud-5"></div>
+            <div class="cloud cloud-6"></div>
+        </div>
+    </section>
 
-                <div class="destination-card">
-                    <div class="card-image">
-                        <img src="images/chefchaouen.jpg" 
-                             alt="Chefchaouen"
-                             onerror="this.src='images/img1.png'">
-                    </div>
-                    <div class="card-content">
-                        <div class="location">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Chefchaouen, Morocco</span>
-                        </div>
-                        <h3>Blue Pearl City</h3>
-                        <div class="card-footer">
-                            <div class="price">
-                                <span class="amount">$150</span>
-                                <span class="per">/person</span>
-                            </div>
-                            <button class="view-details">
-                                View Details <i class="fas fa-arrow-right"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="destination-card">
-                    <div class="card-image">
-                        <img src="images/fes-medina.jpg" 
-                             alt="Fez Medina"
-                             onerror="this.src='images/img2.png'">
-                    </div>
-                    <div class="card-content">
-                        <div class="location">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Fez, Morocco</span>
-                        </div>
-                        <h3>Fez Medina</h3>
-                        <div class="card-footer">
-                            <div class="price">
-                                <span class="amount">$200</span>
-                                <span class="per">/person</span>
-                            </div>
-                            <button class="view-details">
-                                View Details <i class="fas fa-arrow-right"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="destination-card">
-                    <div class="card-image">
-                        <img src="images/atlas-mountains.jpg" 
-                             alt="Atlas Mountains"
-                             onerror="this.src='images/logo-3.png'">
-                    </div>
-                    <div class="card-content">
-                        <div class="location">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Atlas Mountains, Morocco</span>
-                        </div>
-                        <h3>Atlas Mountains</h3>
-                        <div class="card-footer">
-                            <div class="price">
-                                <span class="amount">$300</span>
-                                <span class="per">/person</span>
-                            </div>
-                            <button class="view-details">
-                                View Details <i class="fas fa-arrow-right"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="destination-card">
-                    <div class="card-image">
-                        <img src="images/essaouira.jpg" 
-                             alt="Essaouira"
-                             onerror="this.src='images/logo-2.png'">
-                    </div>
-                    <div class="card-content">
-                        <div class="location">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Essaouira, Morocco</span>
-                        </div>
-                        <h3>Coastal Paradise</h3>
-                        <div class="card-footer">
-                            <div class="price">
-                                <span class="amount">$220</span>
-                                <span class="per">/person</span>
-                            </div>
-                            <button class="view-details">
-                                View Details <i class="fas fa-arrow-right"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+    <!-- Excursions Section -->
+    <section id="excursions" class="excursions-section">
+        <div class="discover-container">
+            <h1 class="main-section-title">Our Excursions</h1>
+            <h2 class="section-title">Discover Morocco's Hidden Gems</h2>
+            <div class="excursions-grid">
+                <!-- Excursions will be populated by JavaScript -->
             </div>
         </div>
     </section>

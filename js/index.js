@@ -5,6 +5,197 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add loaded class to body for smooth transition
     document.body.classList.add('loaded');
     
+    // Tours Data Array
+    const tours = [
+        {
+            id: 1,
+            title: "Overnight in Merzouga: Sahara Desert Tour",
+            duration: "2 Days / 1 Night",
+            route: "Fes → Merzouga → Fes",
+            time: "2 days and 1 night",
+            groupSize: "Up to 20 people",
+            price: 180,
+            image: "images/merzouga-sahara.jpeg",
+            fallbackImage: "images/home-img2.webp",
+            highlights: "Join Best Places in Morocco to discover the beautiful Sahara Desert. Visit Ifrane, known as the \"Moroccan Switzerland,\" and admire the stunning Middle Atlas Mountains.",
+            fullDescription: "Join Best Places in Morocco to discover the beautiful Sahara Desert. Visit Ifrane, known as the \"Moroccan Switzerland,\" and admire the stunning Middle Atlas Mountains. Enjoy a traditional Berber lunch in Midelt, explore the Ziz Valley, and spend the night in a cozy desert camp in Merzouga. Experience camel rides on the famous sand dunes, watch the breathtaking Sahara sunrise, and visit the historic town of Rissani. This Sahara desert tour promises an unforgettable adventure for all travelers.",
+            itinerary: {
+                day1: "Fes – Ifrane – Midelt – Merzouga",
+                day2: "Erg Chebbi Dunes – Middle Atlas Mountains – Fes"
+            },
+            included: ["Full travel insurance", "All transportation during the tour", "Accommodation in hotels or Berber tents", "One breakfast and one dinner", "Camel trekking experience"],
+            notIncluded: ["Personal expenses", "Entrance fees to monuments"],
+            departureTime: "8:00 AM"
+        },
+        {
+            id: 2,
+            title: "3-Day Sahara Desert Adventure",
+            duration: "3 Days / 2 Nights",
+            route: "Fes → Merzouga → Fes",
+            time: "3 days and 2 nights",
+            groupSize: "Up to 20 people",
+            price: 280,
+            image: "images/merzouga-sahara.jpeg",
+            fallbackImage: "images/home-img2.webp",
+            highlights: "Join Best Places in Morocco for a deeper Sahara experience. Visit Ifrane, explore the Middle Atlas Mountains, and enjoy extended time in the desert.",
+            fullDescription: "Join Best Places in Morocco for a deeper Sahara experience. Visit Ifrane, known as the \"Moroccan Switzerland,\" and explore the stunning Middle Atlas Mountains. Enjoy a traditional Berber lunch in Midelt, visit the beautiful Ziz Valley, and relax in a desert camp in Merzouga. Experience camel trekking on the Erg Chebbi dunes, watch unforgettable Sahara sunrises and sunsets, visit the historic town of Rissani, and discover nearby desert villages. This 3-day Sahara adventure is perfect for travelers who want to fully enjoy the desert magic.",
+            itinerary: {
+                day1: "Fes – Ifrane – Midelt – Merzouga",
+                day2: "Merzouga – Rissani – Desert Villages – Merzouga",
+                day3: "Merzouga – Ziz Valley – Middle Atlas – Fes"
+            },
+            included: ["Full travel insurance", "All transportation during the tour", "Accommodation in hotels or Berber tents for 2 nights", "Two breakfasts and two dinners", "Camel trekking experience"],
+            notIncluded: ["Personal expenses", "Entrance fees to monuments"],
+            departureTime: "8:00 AM"
+        },
+        {
+            id: 3,
+            title: "Fes to Marrakech via Merzouga",
+            duration: "3 Days / 2 Nights",
+            route: "Fes → Marrakech",
+            time: "3 days and 2 nights",
+            groupSize: "Up to 20 people",
+            price: 320,
+            image: "images/atlas-mountains.jpg",
+            fallbackImage: "images/logo-3.png",
+            highlights: "Join Best Places in Morocco for an amazing 3-day journey from Fes to Marrakech through the Sahara Desert and the Atlas Mountains.",
+            fullDescription: "Join Best Places in Morocco for an amazing 3-day journey from Fes to Marrakech through the Sahara Desert and the Atlas Mountains. Experience camel rides on the golden dunes of Merzouga, sleep in a traditional Berber desert camp, travel the famous Road of a Thousand Kasbahs, explore Todra and Dadès Valleys, and visit the historic village of Ait Ben Haddou before reaching the lively city of Marrakech.",
+            itinerary: {
+                day1: "Fes – Midelt – Merzouga",
+                day2: "Merzouga – Todra Gorge – Dadès Valley – Ouarzazate",
+                day3: "Ouarzazate – Fint Oasis – Ait Ben Haddou – High Atlas – Marrakech"
+            },
+            included: ["Full travel insurance", "All transportation during the trip", "Accommodation: 1 night in desert camp and 1 night in Marrakech hotel or riad", "Two breakfasts and two dinners", "Camel trekking experience"],
+            notIncluded: ["Personal expenses", "Entrance fees to monuments and sites"],
+            departureTime: "7:00 AM"
+        },
+        {
+            id: 4,
+            title: "Fes to Tangier via Chefchaouen",
+            duration: "2 Days / 1 Night",
+            route: "Fes → Tangier",
+            time: "2 days and 1 night",
+            groupSize: "Up to 20 people",
+            price: 200,
+            image: "images/chefchaouen.jpg",
+            fallbackImage: "images/img1.png",
+            highlights: "Travel with Best Places in Morocco from Fes to Tangier through the famous Blue City of Chefchaouen. Discover the charm of its blue-painted medina.",
+            fullDescription: "Travel with Best Places in Morocco from Fes to Tangier through the famous Blue City of Chefchaouen. Discover the charm of its blue-painted medina, enjoy the mountain landscapes, and explore the coastal beauty of Tangier. This short tour is perfect for travelers who want to combine the calm of the Rif Mountains with the vibrant culture of northern Morocco.",
+            itinerary: {
+                day1: "Fes – Rif Mountains – Chefchaouen",
+                day2: "Chefchaouen – Tangier"
+            },
+            included: ["Full travel insurance", "Private air-conditioned vehicle", "Bottled water during the trip", "All transportation with a driver who speaks your native language", "1-night accommodation in a riad/hotel in Chefchaouen (breakfast included)"],
+            notIncluded: ["Personal expenses", "Entrance fees (if any)", "Lunches and dinners"],
+            departureTime: "8:00 AM"
+        },
+        {
+            id: 5,
+            title: "Full Day Fes & Surroundings Tour",
+            duration: "Full Day",
+            route: "Fes, Morocco",
+            time: "Full day (9:30 AM - 3:30 PM)",
+            groupSize: "Private tour",
+            price: 120,
+            image: "images/fes-medina.jpg",
+            fallbackImage: "images/img2.png",
+            highlights: "Experience the best of Fes in one day — combining the treasures of the UNESCO-listed medina with the beauty of the city's surroundings.",
+            fullDescription: "Experience the best of Fes in one day — combining the treasures of the UNESCO-listed medina with the beauty of the city's surroundings. In the morning, explore historical monuments, artisan workshops, and vibrant souks with a licensed guide. In the afternoon, enjoy a relaxing panoramic drive to see the Royal Palace, Borj Sud, Borj Nord, and peaceful gardens.",
+            itinerary: {
+                morning: "Medina Walking Tour: Bab Boujloud, Bou Inania Madrasa, Al-Qarawiyyin Mosque & University, Nejjarine Museum, Chouara Tanneries",
+                afternoon: "Panoramic & Surroundings Tour: Royal Palace Gates, Mellah, Borj Sud & Borj Nord, Jnan Sbil Gardens, Pottery & Mosaic Workshop"
+            },
+            included: ["Licensed professional guide for the medina", "Private air-conditioned vehicle for panoramic tour", "Driver who speaks your native language", "Bottled water during the trip"],
+            notIncluded: ["Entrance fees to monuments (if any)", "Meals and drinks", "Personal expenses"],
+            departureTime: "9:30 AM"
+        }
+    ];
+
+    // Function to populate tours section
+    function populateTours() {
+        const toursContainer = document.querySelector('.destinations-grid');
+        const excursionsContainer = document.querySelector('.excursions-grid');
+        
+        // Populate tours section
+        if (toursContainer) {
+            toursContainer.innerHTML = '';
+            tours.forEach(tour => {
+                const tourCard = createTourCard(tour);
+                toursContainer.appendChild(tourCard);
+            });
+        }
+
+        // Populate excursions section (temporarily with same data)
+        if (excursionsContainer) {
+            excursionsContainer.innerHTML = '';
+            tours.forEach(tour => {
+                const excursionCard = createTourCard(tour);
+                excursionsContainer.appendChild(excursionCard);
+            });
+        }
+    }
+
+    // Function to create a tour/excursion card
+    function createTourCard(tour) {
+        const tourCard = document.createElement('div');
+        tourCard.className = 'destination-card';
+        tourCard.setAttribute('data-tour-id', tour.id);
+
+        tourCard.innerHTML = `
+            <div class="card-image">
+                <img src="${tour.image}" 
+                     alt="${tour.title}"
+                     onerror="this.src='${tour.fallbackImage}'">
+            </div>
+            <div class="card-content">
+                <div class="tour-badge">${tour.duration}</div>
+                <h3>${tour.title}</h3>
+                <div class="tour-highlights">
+                    <p>${tour.highlights}</p>
+                </div>
+                <div class="tour-details">
+                    <div class="detail-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>${tour.route}</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-clock"></i>
+                        <span>${tour.time}</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-users"></i>
+                        <span>${tour.groupSize}</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="price">
+                        <span class="amount">$${tour.price}</span>
+                        <span class="per">/person</span>
+                    </div>
+                    <button class="view-details" onclick="showTourDetails(${tour.id})">
+                        View Details <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        `;
+
+        return tourCard;
+    }
+
+    // Function to show tour details (placeholder for future modal implementation)
+    window.showTourDetails = function(tourId) {
+        const tour = tours.find(t => t.id === tourId);
+        if (tour) {
+            // For now, just log the tour details
+            console.log('Tour Details:', tour);
+            // TODO: Implement modal or expandable section to show full tour details
+            alert(`Tour Details for: ${tour.title}\n\nThis is a placeholder. In the future, this will show a detailed modal with full itinerary, included/excluded items, and more information.`);
+        }
+    };
+
+    // Populate tours when page loads
+    populateTours();
+    
     // Image Carousel Functionality
     let currentSlideIndex = 0;
     const slides = document.querySelectorAll('.image-carousel .main-image');
