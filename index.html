@@ -40,7 +40,7 @@
         <div class="contact-info">
             <span class="contact-item">
                 <i class="fas fa-phone"></i>
-                <span>+212 (6) 06 27 51 97</span>
+                <span>(+212) 7 19 60 30 09</span>
             </span>
             <span class="contact-item">
                 <i class="fas fa-envelope"></i>
@@ -205,6 +205,178 @@
             <h2 class="section-title">Discover Morocco</h2>
             <div class="destinations-grid">
                 <!-- Tours will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Tour Details Modal Section (Hidden by default) -->
+    <section id="tour-details-modal" class="tour-details-modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Tour Details</h2>
+                <button class="close-modal" onclick="closeTourDetails()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="tour-hero">
+                    <div class="tour-hero-image">
+                        <img id="modal-tour-image" src="" alt="Tour Image">
+                    </div>
+                    <div class="tour-hero-info">
+                        <div class="tour-badge-modal" id="modal-tour-badge"></div>
+                        <h1 id="modal-tour-title"></h1>
+                        <div class="tour-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span id="modal-tour-route"></span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-clock"></i>
+                                <span id="modal-tour-time"></span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-users"></i>
+                                <span id="modal-tour-group-size"></span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-plane-departure"></i>
+                                <span id="modal-tour-departure"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tour-content">
+                    <div class="tour-section">
+                        <h3><i class="fas fa-star"></i> Tour Highlights</h3>
+                        <p id="modal-tour-highlights"></p>
+                    </div>
+                    
+                    <div class="tour-section">
+                        <h3><i class="fas fa-info-circle"></i> Full Description</h3>
+                        <p id="modal-tour-description"></p>
+                    </div>
+                    
+                    <div class="tour-section">
+                        <h3><i class="fas fa-route"></i> Itinerary</h3>
+                        <div id="modal-tour-itinerary"></div>
+                    </div>
+                    
+                    <div class="tour-section">
+                        <h3><i class="fas fa-check-circle"></i> What's Included</h3>
+                        <ul id="modal-tour-included"></ul>
+                    </div>
+                    
+                    <div class="tour-section">
+                        <h3><i class="fas fa-times-circle"></i> Not Included</h3>
+                        <ul id="modal-tour-not-included"></ul>
+                    </div>
+                </div>
+                
+                <div class="tour-actions">
+                    <div class="tour-price">
+                        <span class="price-label">Price per person:</span>
+                        <span class="price-amount" id="modal-tour-price"></span>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn-secondary" onclick="closeTourDetails()">
+                            <i class="fas fa-arrow-left"></i>
+                            Back to Tours
+                        </button>
+                        <button class="btn-primary">
+                            <i class="fas fa-calendar-check"></i>
+                            Book This Tour
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Excursions Details Modal Section (Hidden by default) -->
+    <section id="excursions-details-modal" class="tour-details-modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Excursion Details</h2>
+                <button class="close-modal" onclick="closeExcursionDetails()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="tour-hero">
+                    <div class="tour-hero-image">
+                        <img id="modal-excursion-image" src="" alt="Excursion Image">
+                    </div>
+                    <div class="tour-hero-info">
+                        <div class="tour-badge-modal" id="modal-excursion-badge"></div>
+                        <h1 id="modal-excursion-title"></h1>
+                        <div class="tour-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span id="modal-excursion-route"></span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-clock"></i>
+                                <span id="modal-excursion-time"></span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-users"></i>
+                                <span id="modal-excursion-group-size"></span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-plane-departure"></i>
+                                <span id="modal-excursion-departure"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tour-content">
+                    <div class="tour-section">
+                        <h3><i class="fas fa-star"></i> Excursion Highlights</h3>
+                        <p id="modal-excursion-highlights"></p>
+                    </div>
+                    
+                    <div class="tour-section">
+                        <h3><i class="fas fa-info-circle"></i> Full Description</h3>
+                        <p id="modal-excursion-description"></p>
+                    </div>
+                    
+                    <div class="tour-section">
+                        <h3><i class="fas fa-route"></i> Itinerary</h3>
+                        <div id="modal-excursion-itinerary"></div>
+                    </div>
+                    
+                    <div class="tour-section">
+                        <h3><i class="fas fa-check-circle"></i> What's Included</h3>
+                        <ul id="modal-excursion-included"></ul>
+                    </div>
+                    
+                    <div class="tour-section">
+                        <h3><i class="fas fa-times-circle"></i> Not Included</h3>
+                        <ul id="modal-excursion-not-included"></ul>
+                    </div>
+                </div>
+                
+                <div class="tour-actions">
+                    <div class="tour-price">
+                        <span class="price-label">Price per person:</span>
+                        <span class="price-amount" id="modal-excursion-price"></span>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn-secondary" onclick="closeExcursionDetails()">
+                            <i class="fas fa-arrow-left"></i>
+                            Back to Excursions
+                        </button>
+                        <button class="btn-primary">
+                            <i class="fas fa-calendar-check"></i>
+                            Book This Excursion
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -462,7 +634,7 @@
 
     <!-- Floating WhatsApp Button -->
     <div class="floating-whatsapp">
-        <a href="https://wa.me/212524567890" target="_blank" class="whatsapp-btn" title="Contact us on WhatsApp">
+        <a href="https://wa.me/212719603009" target="_blank" class="whatsapp-btn" title="Contact us on WhatsApp">
             <i class="fab fa-whatsapp"></i>
         </a>
     </div>

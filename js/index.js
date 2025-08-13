@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
             time: "2 days and 1 night",
             groupSize: "Up to 20 people",
             price: 180,
-            image: "images/merzouga-sahara.jpeg",
+            image: "images/ifrane3.jpg",
             fallbackImage: "images/home-img2.webp",
             highlights: "Join Best Places in Morocco to discover the beautiful Sahara Desert. Visit Ifrane, known as the \"Moroccan Switzerland,\" and admire the stunning Middle Atlas Mountains.",
             fullDescription: "Join Best Places in Morocco to discover the beautiful Sahara Desert. Visit Ifrane, known as the \"Moroccan Switzerland,\" and admire the stunning Middle Atlas Mountains. Enjoy a traditional Berber lunch in Midelt, explore the Ziz Valley, and spend the night in a cozy desert camp in Merzouga. Experience camel rides on the famous sand dunes, watch the breathtaking Sahara sunrise, and visit the historic town of Rissani. This Sahara desert tour promises an unforgettable adventure for all travelers.",
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (toursContainer) {
             toursContainer.innerHTML = '';
             tours.forEach(tour => {
-                const tourCard = createTourCard(tour);
+                const tourCard = createTourCard(tour, 'tour');
                 toursContainer.appendChild(tourCard);
             });
         }
@@ -129,17 +129,18 @@ document.addEventListener('DOMContentLoaded', function() {
         if (excursionsContainer) {
             excursionsContainer.innerHTML = '';
             tours.forEach(tour => {
-                const excursionCard = createTourCard(tour);
+                const excursionCard = createTourCard(tour, 'excursion');
                 excursionsContainer.appendChild(excursionCard);
             });
         }
     }
 
     // Function to create a tour/excursion card
-    function createTourCard(tour) {
+    function createTourCard(tour, type) {
         const tourCard = document.createElement('div');
         tourCard.className = 'destination-card';
         tourCard.setAttribute('data-tour-id', tour.id);
+        tourCard.setAttribute('data-type', type);
 
         tourCard.innerHTML = `
             <div class="card-image">
@@ -172,7 +173,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <span class="amount">$${tour.price}</span>
                         <span class="per">/person</span>
                     </div>
-                    <button class="view-details" onclick="showTourDetails(${tour.id})">
+                    <button class="view-details" onclick="showDetails(${tour.id}, '${type}')">
                         View Details <i class="fas fa-arrow-right"></i>
                     </button>
                 </div>
@@ -182,16 +183,169 @@ document.addEventListener('DOMContentLoaded', function() {
         return tourCard;
     }
 
+    // Function to show tour details
+    window.showDetails = function(tourId, type) {
+        const tour = tours.find(t => t.id === tourId);
+        if (tour) {
+            if (type === 'tour') {
+                showTourDetails(tourId);
+            } else if (type === 'excursion') {
+                showExcursionDetails(tourId);
+            }
+        }
+    };
+
     // Function to show tour details (placeholder for future modal implementation)
     window.showTourDetails = function(tourId) {
         const tour = tours.find(t => t.id === tourId);
         if (tour) {
-            // For now, just log the tour details
-            console.log('Tour Details:', tour);
-            // TODO: Implement modal or expandable section to show full tour details
-            alert(`Tour Details for: ${tour.title}\n\nThis is a placeholder. In the future, this will show a detailed modal with full itinerary, included/excluded items, and more information.`);
+            // Populate modal with tour data
+            document.getElementById('modal-tour-image').src = tour.image;
+            document.getElementById('modal-tour-badge').textContent = tour.duration;
+            document.getElementById('modal-tour-title').textContent = tour.title;
+            document.getElementById('modal-tour-route').textContent = tour.route;
+            document.getElementById('modal-tour-time').textContent = tour.time;
+            document.getElementById('modal-tour-group-size').textContent = tour.groupSize;
+            document.getElementById('modal-tour-departure').textContent = tour.departureTime;
+            document.getElementById('modal-tour-highlights').textContent = tour.highlights;
+            document.getElementById('modal-tour-description').textContent = tour.fullDescription;
+            document.getElementById('modal-tour-price').textContent = `$${tour.price}`;
+            
+            // Populate itinerary
+            const itineraryContainer = document.getElementById('modal-tour-itinerary');
+            itineraryContainer.innerHTML = '';
+            Object.entries(tour.itinerary).forEach(([day, description]) => {
+                const dayDiv = document.createElement('div');
+                dayDiv.className = 'itinerary-day';
+                dayDiv.innerHTML = `
+                    <h4>${day}</h4>
+                    <p>${description}</p>
+                `;
+                itineraryContainer.appendChild(dayDiv);
+            });
+            
+            // Populate included items
+            const includedContainer = document.getElementById('modal-tour-included');
+            includedContainer.innerHTML = '';
+            tour.included.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                includedContainer.appendChild(li);
+            });
+            
+            // Populate not included items
+            const notIncludedContainer = document.getElementById('modal-tour-not-included');
+            notIncludedContainer.innerHTML = '';
+            tour.notIncluded.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                notIncludedContainer.appendChild(li);
+            });
+            
+            // Show modal
+            const modal = document.getElementById('tour-details-modal');
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
         }
     };
+
+    // Function to show excursion details
+    window.showExcursionDetails = function(tourId) {
+        const tour = tours.find(t => t.id === tourId);
+        if (tour) {
+            // Populate modal with excursion data
+            document.getElementById('modal-excursion-image').src = tour.image;
+            document.getElementById('modal-excursion-badge').textContent = tour.duration;
+            document.getElementById('modal-excursion-title').textContent = tour.title;
+            document.getElementById('modal-excursion-route').textContent = tour.route;
+            document.getElementById('modal-excursion-time').textContent = tour.time;
+            document.getElementById('modal-excursion-group-size').textContent = tour.groupSize;
+            document.getElementById('modal-excursion-departure').textContent = tour.departureTime;
+            document.getElementById('modal-excursion-highlights').textContent = tour.highlights;
+            document.getElementById('modal-excursion-description').textContent = tour.fullDescription;
+            document.getElementById('modal-excursion-price').textContent = `$${tour.price}`;
+            
+            // Populate itinerary
+            const itineraryContainer = document.getElementById('modal-excursion-itinerary');
+            itineraryContainer.innerHTML = '';
+            Object.entries(tour.itinerary).forEach(([day, description]) => {
+                const dayDiv = document.createElement('div');
+                dayDiv.className = 'itinerary-day';
+                dayDiv.innerHTML = `
+                    <h4>${day}</h4>
+                    <p>${description}</p>
+                `;
+                itineraryContainer.appendChild(dayDiv);
+            });
+            
+            // Populate included items
+            const includedContainer = document.getElementById('modal-excursion-included');
+            includedContainer.innerHTML = '';
+            tour.included.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                includedContainer.appendChild(li);
+            });
+            
+            // Populate not included items
+            const notIncludedContainer = document.getElementById('modal-excursion-not-included');
+            notIncludedContainer.innerHTML = '';
+            tour.notIncluded.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                notIncludedContainer.appendChild(li);
+            });
+            
+            // Show modal
+            const modal = document.getElementById('excursions-details-modal');
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+    };
+
+    // Function to close tour details modal
+    window.closeTourDetails = function() {
+        const modal = document.getElementById('tour-details-modal');
+        modal.classList.add('hidden');
+        document.body.style.overflow = ''; // Restore scrolling
+    };
+
+    // Function to close excursion details modal
+    window.closeExcursionDetails = function() {
+        const modal = document.getElementById('excursions-details-modal');
+        modal.classList.add('hidden');
+        document.body.style.overflow = ''; // Restore scrolling
+    };
+
+    // Close modal when clicking overlay
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('modal-overlay')) {
+            // Check which modal is open and close it
+            const tourModal = document.getElementById('tour-details-modal');
+            const excursionModal = document.getElementById('excursions-details-modal');
+            
+            if (!tourModal.classList.contains('hidden')) {
+                closeTourDetails();
+            } else if (!excursionModal.classList.contains('hidden')) {
+                closeExcursionDetails();
+            }
+        }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            // Check which modal is open and close it
+            const tourModal = document.getElementById('tour-details-modal');
+            const excursionModal = document.getElementById('excursions-details-modal');
+            
+            if (!tourModal.classList.contains('hidden')) {
+                closeTourDetails();
+            } else if (!excursionModal.classList.contains('hidden')) {
+                closeExcursionDetails();
+            }
+        }
+    });
 
     // Populate tours when page loads
     populateTours();
@@ -307,21 +461,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if (contactUsButton) {
         contactUsButton.addEventListener('click', function() {
             // Show contact form or scroll to contact section
-            alert('Contact form coming soon! Please call us at +212 (6) 06 27 51 97 or email info@bestplacesinmorocco.com');
+            alert('Contact form coming soon! Please call us at (+212) 7 19 60 30 09 or email info@bestplacesinmorocco.com');
         });
     }
-
-    // View Details buttons
-    const viewDetailsButtons = document.querySelectorAll('.view-details');
-    viewDetailsButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const card = this.closest('.destination-card');
-            const destinationName = card.querySelector('h3').textContent;
-            
-            // Show a simple alert (you can replace this with a modal or redirect)
-            alert(`Thank you for your interest in ${destinationName}! Our team will contact you soon with more details.`);
-        });
-    });
 
     // Search functionality
     const searchIcon = document.querySelector('a[href="#search"]');

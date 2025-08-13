@@ -1473,6 +1473,26 @@ body.loaded {
     }
 }
 
+@media (max-width: 768px) {
+    .footer-logo img {
+        width: 50px;
+    }
+    
+    .footer-logo h3 {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-logo img {
+        width: 40px;
+    }
+    
+    .footer-logo h3 {
+        font-size: 1rem;
+    }
+}
+
 /* Floating WhatsApp Button */
 .floating-whatsapp {
     position: fixed;
@@ -2210,19 +2230,19 @@ body.loaded {
 @keyframes float-cloud {
     0%, 100% {
         transform: translateY(0px) translateX(0px);
-        opacity: 0.9;
+        opacity: 0.6;
     }
     25% {
         transform: translateY(-10px) translateX(5px);
-        opacity: 0.8;
+        opacity: 0.5;
     }
     50% {
         transform: translateY(-5px) translateX(-3px);
-        opacity: 0.95;
+        opacity: 0.6;
     }
     75% {
         transform: translateY(-15px) translateX(8px);
-        opacity: 0.7;
+        opacity: 0.4;
     }
 }
 
@@ -2265,7 +2285,565 @@ body.loaded {
         font-size: 0.9rem;
     }
     
+    /* Clouds remain visible on all screen sizes */
+    /* Mobile-specific cloud adjustments for better text readability */
     .cloud {
-        display: none;
+        opacity: 0.4;
+        transform: scale(0.6);
+    }
+    
+    .cloud-1 {
+        width: 72px;
+        height: 24px;
+    }
+    
+    .cloud-2 {
+        width: 48px;
+        height: 18px;
+    }
+    
+    .cloud-3 {
+        width: 60px;
+        height: 21px;
+    }
+    
+    .cloud-4 {
+        width: 36px;
+        height: 15px;
+    }
+    
+    .cloud-5 {
+        width: 54px;
+        height: 19px;
+    }
+    
+    .cloud-6 {
+        width: 42px;
+        height: 17px;
+    }
+}
+
+/* Tour Details Modal */
+.tour-details-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.tour-details-modal.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.tour-details-modal:not(.hidden) {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+}
+
+.modal-content {
+    position: relative;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    width: 90%;
+    max-width: 1100px;
+    max-height: 90vh;
+    border-radius: 25px;
+    overflow-y: auto;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
+    animation: modalSlideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(219, 140, 50, 0.1);
+}
+
+/* Custom Scrollbar Styling */
+.modal-content::-webkit-scrollbar {
+    width: 12px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--accent-color), var(--main-color));
+    border-radius: 10px;
+    border: 2px solid transparent;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #e67e22, #7a4a1a);
+}
+
+/* Hide scrollbar arrows/buttons */
+.modal-content::-webkit-scrollbar-button {
+    display: none;
+}
+
+/* Firefox Scrollbar Styling */
+.modal-content {
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-color) transparent;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-60px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2.5rem 2.5rem 1.5rem;
+    border-bottom: 2px solid var(--light-accent);
+    position: sticky;
+    top: 0;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    z-index: 10;
+    border-radius: 25px 25px 0 0;
+}
+
+.modal-title {
+    font-size: 2rem;
+    color: var(--main-color);
+    margin: 0;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.close-modal {
+    background: linear-gradient(135deg, var(--accent-color), #e67e22);
+    border: none;
+    font-size: 1.2rem;
+    color: white;
+    cursor: pointer;
+    padding: 0.8rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(219, 140, 50, 0.3);
+}
+
+.close-modal:hover {
+    background: linear-gradient(135deg, #e67e22, var(--main-color));
+    transform: scale(1.1) rotate(90deg);
+    box-shadow: 0 6px 20px rgba(219, 140, 50, 0.4);
+}
+
+.modal-body {
+    padding: 0 2.5rem 2.5rem;
+}
+
+/* Tour Hero Section */
+.tour-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin: 2.5rem 0;
+    align-items: start;
+    background: linear-gradient(135deg, rgba(242, 212, 177, 0.1) 0%, rgba(255, 255, 255, 0.8) 100%);
+    padding: 2.5rem;
+    border-radius: 20px;
+    border: 1px solid rgba(219, 140, 50, 0.1);
+}
+
+.tour-hero-image {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    position: relative;
+}
+
+.tour-hero-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(219, 140, 50, 0.1) 0%, transparent 100%);
+    pointer-events: none;
+}
+
+.tour-hero-image img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.tour-hero:hover .tour-hero-image img {
+    transform: scale(1.05);
+}
+
+.tour-hero-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.tour-badge-modal {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--accent-color), var(--main-color));
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-align: center;
+    align-self: flex-start;
+    box-shadow: 0 6px 20px rgba(219, 140, 50, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+}
+
+.tour-badge-modal::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.tour-badge-modal:hover::before {
+    left: 100%;
+}
+
+.tour-hero-info h1 {
+    font-size: 3rem;
+    color: var(--main-color);
+    margin: 0;
+    line-height: 1.1;
+    font-weight: 800;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tour-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(219, 140, 50, 0.1);
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--text-color);
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(219, 140, 50, 0.1);
+}
+
+.meta-item:last-child {
+    border-bottom: none;
+}
+
+.meta-item i {
+    color: var(--accent-color);
+    width: 24px;
+    font-size: 1.2rem;
+    background: rgba(219, 140, 50, 0.1);
+    padding: 0.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Tour Content Sections */
+.tour-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    margin: 3rem 0;
+}
+
+.tour-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    border-left: 5px solid var(--accent-color);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(219, 140, 50, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.tour-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(135deg, var(--accent-color), var(--main-color));
+}
+
+.tour-section h3 {
+    color: var(--main-color);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 700;
+}
+
+.tour-section h3 i {
+    color: var(--accent-color);
+    background: rgba(219, 140, 50, 0.1);
+    padding: 0.8rem;
+    border-radius: 50%;
+    font-size: 1.1rem;
+}
+
+.tour-section p {
+    color: var(--text-color);
+    line-height: 1.8;
+    margin: 0;
+    font-size: 1.05rem;
+}
+
+.tour-section ul {
+    color: var(--text-color);
+    line-height: 1.8;
+    margin: 0;
+    padding-left: 1.5rem;
+}
+
+.tour-section li {
+    margin-bottom: 0.8rem;
+    position: relative;
+}
+
+.tour-section li::before {
+    content: '✓';
+    color: var(--accent-color);
+    font-weight: bold;
+    position: absolute;
+    left: -1.5rem;
+}
+
+/* Itinerary Day Styling */
+.itinerary-day {
+    background: linear-gradient(135deg, #f8f9fa 0%, white 100%);
+    padding: 1.5rem;
+    border-radius: 15px;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid var(--accent-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(219, 140, 50, 0.1);
+    transition: all 0.3s ease;
+}
+
+.itinerary-day:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.itinerary-day h4 {
+    color: var(--main-color);
+    margin: 0 0 1rem 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.itinerary-day h4::before {
+    content: '📍';
+    font-size: 1.1rem;
+}
+
+.itinerary-day p {
+    margin: 0;
+    color: var(--text-color);
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
+/* Tour Actions */
+.tour-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2.5rem;
+    background: linear-gradient(135deg, var(--light-accent) 0%, rgba(242, 212, 177, 0.3) 100%);
+    border-radius: 20px;
+    margin-top: 3rem;
+    border: 1px solid rgba(219, 140, 50, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.tour-price {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.price-label {
+    color: var(--text-color);
+    font-size: 1rem;
+    opacity: 0.8;
+    font-weight: 500;
+}
+
+.price-amount {
+    color: var(--main-color);
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.action-buttons {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.btn-secondary, .btn-primary {
+    padding: 1.2rem 2.5rem;
+    border: none;
+    border-radius: 30px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary {
+    background: white;
+    color: var(--main-color);
+    border: 2px solid var(--main-color);
+}
+
+.btn-secondary:hover {
+    background: var(--main-color);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(92, 57, 17, 0.3);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--accent-color), #e67e22);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #e67e22, var(--main-color));
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(219, 140, 50, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        max-height: 95vh;
+    }
+    
+    .modal-header {
+        padding: 1.5rem 1.5rem 1rem;
+    }
+    
+    .modal-body {
+        padding: 0 1.5rem 1.5rem;
+    }
+    
+    .tour-hero {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .tour-hero-image img {
+        height: 250px;
+    }
+    
+    .tour-hero-info h1 {
+        font-size: 2rem;
+    }
+    
+    .tour-actions {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        width: 98%;
+        border-radius: 15px;
+    }
+    
+    .modal-header {
+        padding: 1rem 1rem 0.5rem;
+    }
+    
+    .modal-body {
+        padding: 0 1rem 1rem;
+    }
+    
+    .tour-hero-image img {
+        height: 200px;
+    }
+    
+    .tour-hero-info h1 {
+        font-size: 1.8rem;
+    }
+    
+    .tour-section {
+        padding: 1rem;
     }
 }
