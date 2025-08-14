@@ -52,7 +52,15 @@ function showMenu(menuClass) {
     showById('hide-menu');
     let navBar = document.getElementsByClassName(menuClass)[0];
     let navItems = navBar.getElementsByTagName('div');
-    showElements([...navItems].slice(1));
+    
+    // Show elements and add show class for animation
+    [...navItems].slice(1).forEach(item => {
+        item.style.display = 'flex';
+        // Add a small delay to ensure display is set before adding show class
+        setTimeout(() => {
+            item.classList.add('show');
+        }, 10);
+    });
 }
 
 function hideMenu(menuClass) {
@@ -61,5 +69,13 @@ function hideMenu(menuClass) {
 
     let navBar = document.getElementsByClassName(menuClass)[0];
     let navItems = navBar.getElementsByTagName('div');
-    hideElements([...navItems].slice(1));
+    
+    // Remove show class first for animation, then hide
+    [...navItems].slice(1).forEach(item => {
+        item.classList.remove('show');
+        // Wait for animation to complete before hiding
+        setTimeout(() => {
+            item.style.display = 'none';
+        }, 300);
+    });
 }
