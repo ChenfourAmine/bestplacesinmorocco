@@ -492,20 +492,27 @@ document.addEventListener('DOMContentLoaded', function() {
     // window.changeSlide = changeSlide;
     // window.currentSlide = goToSlide;
     
-    // Smooth scrolling for navigation links
-    const navLinks = document.querySelectorAll('a[href^="#"]');
+    // Smooth scrolling for navigation links (trigger on hover instead of click)
+    const navLinks = document.querySelectorAll('.nav1 a[href^="#"], .nav2 a[href^="#"]');
     navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
+        const handleHoverScroll = () => {
+            const targetId = link.getAttribute('href');
             const targetSection = document.querySelector(targetId);
-            
             if (targetSection) {
                 targetSection.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
                 });
             }
+        };
+
+        // Scroll on hover
+        link.addEventListener('mouseenter', handleHoverScroll);
+
+        // Also scroll on click (prevent default jump)
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            handleHoverScroll();
         });
     });
 
