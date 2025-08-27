@@ -504,6 +504,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     block: 'start'
                 });
             }
+            if(document.getElementById('hide-menu').style.display == 'flex'){
+                hideMenu('nav1');
+            }
         };
 
         // Scroll on hover
